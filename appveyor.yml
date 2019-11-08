@@ -1,0 +1,26 @@
+# src.: https://www.appveyor.com/docs/lang/nodejs-iojs/
+
+# Test against the latest version of this Node.js version
+image: ubuntu
+stack: node 12
+
+platform:
+  - x64
+
+# Install scripts. (runs after repo cloning)
+install:
+  # install modules
+  - yarn install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - yarn --version
+  # run tests
+  - yarn start
+  # run dx scanner
+  - npx dx-scanner --fail=off
+
+# Don't actually build.
+build: off

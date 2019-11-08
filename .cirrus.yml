@@ -1,0 +1,11 @@
+container:
+  image: node:latest
+
+task:
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  start_script: yarn start
+  dx_install_script: yarn global add dx-scanner
+  dxs_script: dx-scanner --fail=off
